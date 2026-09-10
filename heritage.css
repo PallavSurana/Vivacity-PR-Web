@@ -1,0 +1,64 @@
+/* Vivacity '27 — Royal Rajasthan after dark. */
+:root {
+  --ink: #170b08;
+  --paper: #fff3de;
+  --muted: #c7a98e;
+  --line: rgba(255, 209, 139, .25);
+  --cyan: #f5bd43;
+  --pink: #d85335;
+  --violet: #804c6d;
+  --yellow: #ffcf62;
+}
+
+body {
+  background-color: var(--ink);
+  background-image: radial-gradient(circle at 15% 10%, #6d272139, transparent 25%), radial-gradient(circle at 80% 35%, #b8782424, transparent 29%);
+}
+.grain { opacity: .16; mix-blend-mode: overlay; }
+
+/* Hand-drawn Mandana field, used softly so content stays legible. */
+.section, footer {
+  background-image: url("data:image/svg+xml,%3Csvg width='112' height='112' viewBox='0 0 112 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f7c56a' stroke-width='1' opacity='.18'%3E%3Cpath d='M56 9l7 17 17 7-17 7-7 17-7-17-17-7 17-7zM56 55l9 12-9 12-9-12zM12 12l5 5-5 5-5-5zM100 12l5 5-5 5-5-5zM12 100l5 5-5 5-5-5zM100 100l5 5-5 5-5-5z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 112px 112px;
+}
+.intro { background-color: #24100d; background-image: radial-gradient(circle at 83% 55%, #a74f2e66, transparent 30%), url("data:image/svg+xml,%3Csvg width='112' height='112' viewBox='0 0 112 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f7c56a' stroke-width='1' opacity='.18'%3E%3Cpath d='M56 9l7 17 17 7-17 7-7 17-7-17-17-7 17-7zM56 55l9 12-9 12-9-12z'/%3E%3C/g%3E%3C/svg%3E"); }
+.numbers { background-color: #1a0d15; background-image: radial-gradient(circle at 50% 50%, #9d4a3188, transparent 28%), url("data:image/svg+xml,%3Csvg width='112' height='112' viewBox='0 0 112 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f7c56a' stroke-width='1' opacity='.18'%3E%3Cpath d='M56 9l7 17 17 7-17 7-7 17-7-17-17-7 17-7z'/%3E%3C/g%3E%3C/svg%3E"); }
+.districts { background-color: #20100c; }
+.events-section { background-color: #170d18; background-image: radial-gradient(circle at 50% 54%, #843b3678 0%, #271321 35%, #170b08 72%); }
+.nights { background-color: #160a15; background-image: radial-gradient(ellipse at 51% 32%, #af4e4270, transparent 35%), linear-gradient(#250b18, #14080c); }
+.experience { background-color: #f7e3bf; color: #30120e; background-image: url("data:image/svg+xml,%3Csvg width='112' height='112' viewBox='0 0 112 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2398492d' stroke-width='1.2' opacity='.28'%3E%3Cpath d='M56 9l7 17 17 7-17 7-7 17-7-17-17-7 17-7zM12 12l5 5-5 5-5-5zM100 100l5 5-5 5-5-5z'/%3E%3C/g%3E%3C/svg%3E"); }
+.archive { background-color: #220e15; }.transmission { background-color: #1b0d13; }.join { background-color: #160a0b; background-image: radial-gradient(circle at 50% 52%, #91402e88, transparent 32%), url("data:image/svg+xml,%3Csvg width='112' height='112' viewBox='0 0 112 112' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f7c56a' stroke-width='1' opacity='.18'%3E%3Cpath d='M56 9l7 17 17 7-17 7-7 17-7-17-17-7 17-7z'/%3E%3C/g%3E%3C/svg%3E"); }
+footer { background-color: #120807; }
+
+/* The city becomes a royal twilight backdrop, framed by palace arches. */
+.city-image { filter: sepia(.38) hue-rotate(318deg) saturate(.82) contrast(1.1) brightness(.7); }
+.hero-wash { background: linear-gradient(90deg, rgba(23, 11, 8, .9), rgba(58, 21, 19, .2) 56%, rgba(23, 11, 8, .76)), linear-gradient(0deg, #170b08 0%, transparent 36%, rgba(91, 40, 25, .2)); }
+.scanlines { opacity: .08; background: repeating-linear-gradient(0deg, transparent 0 4px, #f7c56a1b 5px); }
+.hero { --heritage-x: 0px; --heritage-y: 0px; perspective: 1000px; }
+.heritage-skyline { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 27%; pointer-events: none; opacity: .86; background: linear-gradient(90deg, #180907 0 9%, transparent 9% 15%, #180907 15% 29%, transparent 29% 39%, #180907 39% 62%, transparent 62% 69%, #180907 69% 86%, transparent 86%); mask-image: linear-gradient(to top, #000, transparent); transform: translate3d(var(--heritage-x), var(--heritage-y), 0) rotateX(5deg); transform-origin: bottom center; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.heritage-skyline i { position: absolute; bottom: 0; width: 10%; height: 75%; border: 2px solid #9d512f; border-bottom: 0; border-radius: 60px 60px 0 0 / 80px 80px 0 0; box-shadow: 0 0 25px #d1612944; }.heritage-skyline i:nth-child(1) { left: 5%; height: 55%; }.heritage-skyline i:nth-child(2) { left: 19%; height: 83%; }.heritage-skyline i:nth-child(3) { left: 38%; height: 55%; }.heritage-skyline i:nth-child(4) { right: 30%; height: 100%; }.heritage-skyline i:nth-child(5) { right: 14%; height: 70%; }.heritage-skyline i:nth-child(6) { right: 2%; height: 50%; }
+.hero-content:before { content: ""; position: absolute; z-index: -1; right: 5%; top: 12%; width: min(38vw, 520px); height: 74%; border: 1px solid #f5bd4355; border-bottom: 0; border-radius: 50% 50% 0 0 / 15% 15% 0 0; box-shadow: inset 0 0 65px #e1702c1a, 0 0 65px #e1702c12; }
+
+/* Jharokha silhouette: repeated wherever the site presents an image or a stage. */
+.artist-card, .gallery-grid figure, .stage-screen { clip-path: polygon(0 100%, 0 14%, 7% 14%, 7% 8%, 16% 8%, 16% 4%, 28% 4%, 28% 1%, 72% 1%, 72% 4%, 84% 4%, 84% 8%, 93% 8%, 93% 14%, 100% 14%, 100% 100%); border-color: #e3ad57b8; }
+.artist-card:before, .gallery-grid figure:before { content: "✦"; position: absolute; z-index: 3; top: 12px; right: 12px; color: var(--yellow); font: 17px var(--font-display); text-shadow: 0 0 10px #ffcf6266; }
+.artist-card { background: #2c110d; }.artist-card:after { background: linear-gradient(0deg, #1b0907 0%, transparent 70%); }
+.stage-screen { border-width: 2px; box-shadow: 0 0 50px #d8553655, inset 0 0 40px #f5bd4322; background: #36101ce0; }
+.stage-screen .screen-glow { background: #d85335; }.stage-screen>span, .artist-card small { color: var(--yellow); }
+
+/* Block print borders and heritage colour finishes. */
+.section-index, .eyebrow { color: #f6cd7b; }.section-index span { color: #cb9874; }.lead, .district-heading>p:last-of-type { color: #e0c4ad; }
+.intro h2 em, .districts h2 em, .events-section h2 em, .nights h2 em, .join h2 em { color: var(--yellow); }.numbers h2 em, .archive h2 em { color: #ef7451; }.experience h2 em { color: #a03d32; }
+.district { border-color: #e3aa6140; }.district:hover { background: #f5bd4312; }.district:before { background: currentColor; }
+.nav { mix-blend-mode: normal; background: linear-gradient(180deg, #170b08b8, transparent); }.nav-cta { border-color: #f5bd4399; color: var(--yellow); }.brand span { border-color: var(--yellow); color: var(--yellow); }
+.nav nav a { display: inline-flex; align-items: center; gap: 6px; color: #f8e5c5; }.nav nav a:hover { color: var(--yellow); }
+.nav-motif { width: 0; height: 21px; opacity: 0; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transform: translateX(-7px) scale(.78); transition: width .3s ease, opacity .3s ease, transform .3s ease; }.nav nav a:hover .nav-motif { width: 28px; opacity: 1; transform: translateX(0) scale(1); }.nav nav a:hover .camel { animation: camel-walk .75s ease-in-out infinite alternate; }.nav nav a:hover .puppet { animation: puppet-dance .7s ease-in-out infinite alternate; transform-origin: 18px 6px; }.nav nav a:hover .dhol { animation: dhol-beat .45s ease-in-out infinite alternate; }
+@keyframes camel-walk { to { transform: translateX(2px) translateY(-2px); } }@keyframes puppet-dance { to { transform: rotate(9deg) translateY(-1px); } }@keyframes dhol-beat { to { transform: rotate(-7deg) scale(1.08); } }
+
+.web-lines path { stroke: #e8ab57; }.web-lines path:last-child { stroke: #d85335; }.event-web:before { background: linear-gradient(#e3a5571c 1px, transparent 1px), linear-gradient(90deg, #e3a5571c 1px, transparent 1px); }.event-web:after { border-color: #f5bd4344; }.web-core { border-color: var(--yellow); background: #2e130fec; box-shadow: 0 0 50px #f5bd4338, inset 0 0 25px #f5bd431c; }.web-core span { color: var(--yellow); }.web-core:before { border-color: #f5bd4355; }.web-core:after { border-color: #d8533555; }.web-node { background: #250f0dd9; }.orbit-event { background: #2b100ee8; }.web-instruction i { color: var(--yellow); }
+
+.xp-one { background: radial-gradient(circle at 30% 25%, #f2b940, #a4402f 42%, #391310 75%); }.xp-two { background: radial-gradient(circle at 80% 20%, #ca5034, #704054 45%, #251114 75%); }.xp-three { background: radial-gradient(circle at 30% 75%, #f7c857, #d1613a 36%, #4b1921 72%); }
+.gallery-grid figure { background: #3b1711; }.gallery-grid figcaption { color: #fff0d5; }.speaker { border-color: #a85035; background: repeating-linear-gradient(0deg, #180706 0 8px, #4a1e1a 9px 10px); }.speaker:after { border-color: #f5bd43; box-shadow: 0 0 35px #f5bd4344; }
+
+@media (max-width: 800px) { .nav nav a { gap: 0; }.nav-motif { display: none; }.heritage-skyline { height: 19%; }.hero-content:before { right: -12%; width: 70vw; }.artist-card, .gallery-grid figure, .stage-screen { clip-path: polygon(0 100%,0 11%,9% 11%,9% 6%,23% 6%,23% 2%,77% 2%,77% 6%,91% 6%,91% 11%,100% 11%,100% 100%); } }
+@media (prefers-reduced-motion: reduce) { .nav nav a:hover .camel, .nav nav a:hover .puppet, .nav nav a:hover .dhol { animation: none; } }
