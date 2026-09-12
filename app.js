@@ -2,7 +2,7 @@ const districts = [
   { name: "Dance", count: 6, tag: "Where the city moves.", color: "cyan", events: ["Razzmatazz", "Street Dance", "Let's Tangle", "Mudra", "Pump It Up", "Taal Tarang"] },
   { name: "Music", count: 5, tag: "Turn the volume into a landmark.", color: "pink", events: ["Battle of Bands", "Gully War", "Malhaar", "Bandish", "Aaroh"] },
   { name: "Drama", count: 4, tag: "Every shadow has a story.", color: "yellow", events: ["Rangshala", "Hunkaar", "Mukhauta", "Paddhati"] },
-  { name: "Photography", count: 6, tag: "Frame the flash before it fades.", color: "violet", events: ["FXC", "Photoboth", "Image Hunt", "Pixels", "Perspective", "Kalakriti"] },
+  { name: "Photography", count: 6, tag: "Frame the flash before it fades.", color: "violet", events: ["FMC", "Photoboth", "Image Hunt", "Pixels", "Perspective", "Kalakriti"] },
   { name: "Fashion", count: 2, tag: "Make the street your runway.", color: "orange", events: ["Vogue", "Mr and Ms Viva"] },
   { name: "Art", count: 5, tag: "Make the city impossible to ignore.", color: "blue", events: ["Tattoo Tales", "Splash", "Eclectic", "Hue-niverse", "Contrasto"] },
   { name: "Speaking Arts", count: 7, tag: "Speak until the room changes shape.", color: "cyan", events: ["Duologue", "Family Feud", "Potpourri", "Dare to Spell", "Spotlight", "Afreen", "Open Discussion"] },
@@ -27,7 +27,7 @@ const descriptions = {
   "Hunkaar": "A Drama District call for bold voices and a performance that carries beyond the stage. Official Vivacity ’27 information is to be announced.",
   "Mukhauta": "A theatre signal that puts character, transformation and the power of performance in the spotlight. More details are coming soon.",
   "Paddhati": "A Drama District experience rooted in the craft and language of theatre. The Vivacity ’27 format will be released soon.",
-  "FXC": "A Photography District challenge for creating images that hold a moment, an idea and a point of view. Official details are coming soon.",
+  "FMC": "A Photography District challenge for creating images that hold a moment, an idea and a point of view. Official details are coming soon.",
   "Photoboth": "A Photography District space for quick frames, festival energy and memories made in the moment. Vivacity ’27 details are to be announced.",
   "Image Hunt": "A visual pursuit through the festival landscape, with every frame waiting to be discovered. Official format details are coming soon.",
   "Pixels": "A Photography District signal for visual storytellers who see the city differently. The Vivacity ’27 brief will be shared soon.",
@@ -55,7 +55,35 @@ const descriptions = {
   "Jamming Night": "An open musical moment for sound, spontaneity and the people who want to keep the night moving. More details are coming soon.",
   "Stage Spectrum": "A festival-stage experience built to bring different creative energies into one live moment. Vivacity ’27 format is to be announced."
 };
-const allEvents = districts.flatMap(d => d.events.map(name => ({ name, category: d.name, color: d.color, description: descriptions[name] || "Vivacity ’27 details for this event are coming soon." })));
+const eventImages = {
+  "Battle of Bands": "public/BOB_Background.jpg",
+  "Bandish": "public/Bandish_Background.jpg",
+  "Gully War": "public/Gully_War_Background.jpg",
+  "Rangshala": "public/Rangshala_Background.jpg",
+  "Hunkaar": "public/Hunkaar_Background.jpg",
+  "Mukhauta": "public/Mime_Background.jpg",
+  "Paddhati": "public/Monoact_Background.jpg",
+  "FMC": "public/FXC_Background.jpg",
+  "Photoboth": "public/Photoboth_Background.jpg",
+  "Image Hunt": "public/Image_Hunt_Background.jpg",
+  "Pixels": "public/Pixels_Background.jpg",
+  "Perspective": "public/Perspective_Background.jpg",
+  "Kalakriti": "public/Kalakriti_Background.jpg",
+  "Vogue": "public/Vogue_Background.jpg",
+  "Mr and Ms Viva": "public/Mr and mIss Viva.jpg",
+  "Tattoo Tales": "public/Tatoo_Tales.jpg",
+  "Splash": "public/Splash_Background.jpg",
+  "Eclectic": "public/Eclectic_Background.jpg",
+  "Hue-niverse": "public/Hue_niverse_Background.jpg",
+  "Contrasto": "public/Contrasto_Background.jpg",
+  "Razzmatazz": "public/Razzmatazz_Background.jpg",
+  "Street Dance": "public/Street Dance_Background.jpg",
+  "Let's Tangle": "public/Lets_Tangle_Background.svg",
+  "Mudra": "public/Mudra_Background.JPG",
+  "Pump It Up": "public/Pump_It_Up_Background.svg",
+  "Taal Tarang": "public/Taal Tarang_Background.jpg"
+};
+const allEvents = districts.flatMap(d => d.events.map(name => ({ name, category: d.name, color: d.color, description: descriptions[name] || "Vivacity ’27 details for this event are coming soon.", image: eventImages[name] || "" })));
 const districtList = document.getElementById("district-list");
 const webNodes = document.getElementById("web-nodes");
 const orbitEvents = document.getElementById("orbit-events");
@@ -73,17 +101,21 @@ webNodes.innerHTML = flagshipDistricts.map((district, index) => `<button class="
 function releaseEvents(category) {
   const district = districts.find(item => item.name === category);
   if (!district) return;
-  const roamingPositions = [[12, 15], [69, 15], [78, 36], [66, 67], [20, 72], [8, 44], [38, 80]];
   document.querySelectorAll(".web-node").forEach(node => node.classList.toggle("selected", node.dataset.category === category));
   eventWeb.classList.add("district-open");
   coreTitle.innerHTML = district.name.toUpperCase();
   coreDetail.textContent = `${district.count} EVENTS UNLOCKED`;
   webPrize.textContent = "PRIZE POOL · TO BE ANNOUNCED";
   webInstruction.innerHTML = `EVENT SIGNALS UNLOCKED <i>✦</i>`;
+  const eventCount = district.events.length;
+  const radiusX = eventCount <= 4 ? 35 : 39;
+  const radiusY = eventCount <= 4 ? 36 : 39;
   orbitEvents.innerHTML = district.events.map((name, index) => {
-    const position = roamingPositions[index % roamingPositions.length];
     const event = allEvents.find(item => item.name === name && item.category === district.name);
-    return `<button class="orbit-event ${district.color}" data-event="${event.name}" data-category="${event.category}" data-description="${event.description}" style="--event-x:${position[0]}%;--event-y:${position[1]}%;--event-delay:${index * 115}ms;--event-duration:${4.2 + (index % 3) * .7}s;--event-shift:${index % 2 ? 18 : -18}px"><span>✦</span>${name}</button>`;
+    const angle = -Math.PI / 2 + (index * Math.PI * 2) / eventCount;
+    const eventX = 50 + Math.cos(angle) * radiusX;
+    const eventY = 50 + Math.sin(angle) * radiusY;
+    return `<button class="orbit-event ${district.color}" data-event="${event.name}" data-category="${event.category}" data-description="${event.description}" data-image="${event.image}" style="--event-x:${eventX}%;--event-y:${eventY}%;--event-delay:${index * 115}ms"><span>✦</span>${name}</button>`;
   }).join("");
   orbitEvents.querySelectorAll(".orbit-event").forEach(event => event.addEventListener("click", () => openModal(event.dataset)));
 }
@@ -92,7 +124,8 @@ webNodes.addEventListener("click", event => { const node = event.target.closest(
 districtList.addEventListener("click", event => { const district = event.target.closest(".district"); if (district) releaseEvents(district.dataset.category); });
 
 const modal = document.getElementById("event-modal");
-function openModal(data) { document.getElementById("modal-category").textContent = data.category + " DISTRICT"; document.getElementById("modal-name").textContent = data.event; document.getElementById("modal-description").textContent = data.description; modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); }
+const modalImage = document.getElementById("modal-image");
+function openModal(data) { document.getElementById("modal-category").textContent = data.category + " DISTRICT"; document.getElementById("modal-name").textContent = data.event; document.getElementById("modal-description").textContent = data.description; modalImage.hidden = !data.image; modalImage.src = data.image; modalImage.alt = data.event + " event"; modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); }
 function closeModal() { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); document.body.classList.remove("no-scroll"); }
 modal.addEventListener("click", e => { if (e.target.classList.contains("modal-backdrop") || e.target.closest(".close-modal") || e.target.closest(".close-button")) closeModal(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });

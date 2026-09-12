@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Pump It Up dance event artwork</title>
+  <desc id="desc">An energetic neon dance poster with a moving figure and rhythmic lines.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071326"/>
+      <stop offset="0.55" stop-color="#173b67"/>
+      <stop offset="1" stop-color="#f0445d"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#48f2e5"/>
+      <stop offset="1" stop-color="#ffe66d"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="900" cy="180" r="210" fill="#ff526b" opacity=".28" filter="url(#blur)"/>
+  <path d="M0 625 C220 525 340 760 585 615 S950 500 1200 585" fill="none" stroke="#48f2e5" stroke-width="10" opacity=".72"/>
+  <path d="M0 685 C225 585 360 795 600 660 S970 545 1200 635" fill="none" stroke="#ffe66d" stroke-width="4" opacity=".7"/>
+  <g fill="none" stroke="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="585" cy="220" r="42" stroke-width="16"/>
+    <path d="M570 265 L500 420 L610 455 L700 350 M505 420 L395 330 M610 455 L760 520 M525 315 L690 275" stroke-width="24"/>
+    <path d="M398 330 L325 230 M690 275 L820 185 M760 520 L905 610 M500 420 L420 575" stroke-width="13" opacity=".8"/>
+  </g>
+  <g fill="#f7f4e8" font-family="Arial, sans-serif">
+    <text x="72" y="105" font-size="22" letter-spacing="7">DANCE DISTRICT / 05</text>
+    <text x="70" y="680" font-size="92" font-weight="800" letter-spacing="-3">PUMP IT UP</text>
+    <text x="76" y="730" font-size="19" letter-spacing="5">MOVE FIRST. LET THE ROOM CATCH UP.</text>
+  </g>
+  <path d="M76 142 H280" stroke="#ffe66d" stroke-width="5"/>
+</svg>
