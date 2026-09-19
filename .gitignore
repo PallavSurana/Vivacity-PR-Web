@@ -4,3 +4,6 @@ admin.js
 admin.css
 google-apps-script.gs
 .DS_Store
+node_modules/
+dist/
+private/
