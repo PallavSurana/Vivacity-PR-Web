@@ -59,6 +59,21 @@ const eventImages = {
   "Battle of Bands": "public/BOB_Background.jpg",
   "Bandish": "public/Bandish_Background.jpg",
   "Gully War": "public/Gully_War_Background.jpg",
+  "Malhaar": "public/malhaar_background.jpg",
+  "Aaroh": "public/AAROH_BACKGROUND.jpg",
+  "Duologue": "public/Duologue_Background.jpg",
+  "Family Feud": "public/FamilyFeuds_Background.jpg",
+  "Potpourri": "public/Potpourii_background.jpg",
+  "Dare to Spell": "public/Dare_to_spell_background.jpg",
+  "Spotlight": "public/Spotlight_background.jpg",
+  "Afreen": "public/Afreen_Background.jpg",
+  "Open Discussion": "public/OPen mIC Background.jpg",
+  "Bamboozled": "public/Bamboozled_background.jpg",
+  "Movie Auction": "public/Movie_Auction_Background.jpg",
+  "Prom Night": "public/Prom_Niight_background.jpg",
+  "Jamming Night": "public/Jamming_Night.jpg",
+  "Silent Disco": "public/SILENT_DISCO_BACKGROUND.JPG",
+  "Stage Spectrum": "public/Stage Spectrum_background.jpg",
   "Rangshala": "public/Rangshala_Background.jpg",
   "Hunkaar": "public/Hunkaar_Background.jpg",
   "Mukhauta": "public/Mime_Background.jpg",
@@ -76,11 +91,12 @@ const eventImages = {
   "Eclectic": "public/Eclectic_Background.jpg",
   "Hue-niverse": "public/Hue_niverse_Background.jpg",
   "Contrasto": "public/Contrasto_Background.jpg",
+  "Sahyog": "public/Sahyog_Background.JPG",
   "Razzmatazz": "public/Razzmatazz_Background.jpg",
   "Street Dance": "public/Street Dance_Background.jpg",
-  "Let's Tangle": "public/Lets_Tangle_Background.svg",
+  "Let's Tangle": "public/Let's Tangle_background.jpg",
   "Mudra": "public/Mudra_Background.JPG",
-  "Pump It Up": "public/Pump_It_Up_Background.svg",
+  "Pump It Up": "public/PUMP_IT_UP_BACKGROUND.jpg",
   "Taal Tarang": "public/Taal Tarang_Background.jpg"
 };
 const allEvents = districts.flatMap(d => d.events.map(name => ({ name, category: d.name, color: d.color, description: descriptions[name] || "Vivacity ’27 details for this event are coming soon.", image: eventImages[name] || "" })));
@@ -92,10 +108,10 @@ const coreTitle = document.getElementById("web-core-title");
 const coreDetail = document.getElementById("web-core-detail");
 const webPrize = document.getElementById("web-prize");
 const webInstruction = document.getElementById("web-instruction");
-const flagshipDistricts = districts.slice(0, 6);
-const nodePositions = [[17, 22], [47, 9], [80, 23], [84, 72], [50, 88], [15, 71]];
+const flagshipDistricts = districts;
+const nodePositions = [[12, 22], [30, 9], [50, 8], [70, 9], [88, 22], [88, 72], [70, 91], [50, 93], [30, 91], [12, 72]];
 
-districtList.innerHTML = districts.slice(0, 6).map((d, i) => `<a href="#events" class="district ${d.color}" data-category="${d.name}"><span class="district-no">0${i + 1}</span><div><h3>${d.name}</h3><p>${d.tag}</p></div><span class="district-count">${d.count} EVENTS</span><i>↗</i></a>`).join("");
+districtList.innerHTML = districts.map((d, i) => `<a href="#events" class="district ${d.color}" data-category="${d.name}"><span class="district-no">0${i + 1}</span><div><h3>${d.name}</h3><p>${d.tag}</p></div><span class="district-count">${d.count} EVENTS</span><i>↗</i></a>`).join("");
 webNodes.innerHTML = flagshipDistricts.map((district, index) => `<button class="web-node ${district.color}" data-category="${district.name}" style="--node-x:${nodePositions[index][0]}%;--node-y:${nodePositions[index][1]}%"><span class="node-pulse"></span><small>0${index + 1} / ${district.count} EVENTS</small><strong>${district.name}</strong></button>`).join("");
 
 function releaseEvents(category) {
@@ -126,9 +142,26 @@ districtList.addEventListener("click", event => { const district = event.target.
 const modal = document.getElementById("event-modal");
 const modalImage = document.getElementById("modal-image");
 function openModal(data) { document.getElementById("modal-category").textContent = data.category + " DISTRICT"; document.getElementById("modal-name").textContent = data.event; document.getElementById("modal-description").textContent = data.description; modalImage.hidden = !data.image; modalImage.src = data.image; modalImage.alt = data.event + " event"; modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); }
+modalImage.addEventListener("error", () => { modalImage.hidden = true; });
 function closeModal() { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); document.body.classList.remove("no-scroll"); }
 modal.addEventListener("click", e => { if (e.target.classList.contains("modal-backdrop") || e.target.closest(".close-modal") || e.target.closest(".close-button")) closeModal(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+const menuButton = document.querySelector(".menu-button");
+const mainNav = document.querySelector(".nav nav");
+if (menuButton && mainNav) {
+  const setMenu = open => {
+    mainNav.classList.toggle("is-open", open);
+    menuButton.classList.toggle("is-open", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("no-scroll", open);
+  };
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.addEventListener("click", () => setMenu(!mainNav.classList.contains("is-open")));
+  mainNav.addEventListener("click", event => { if (event.target.closest("a")) setMenu(false); });
+  document.addEventListener("click", event => { if (!event.target.closest(".nav") && mainNav.classList.contains("is-open")) setMenu(false); });
+  document.addEventListener("keydown", event => { if (event.key === "Escape") setMenu(false); });
+}
 
 const loader = document.getElementById("loader"), percentage = document.getElementById("loader-number"); let p = 0;
 const loading = setInterval(() => { p = Math.min(p + Math.ceil(Math.random() * 14), 100); percentage.textContent = `${p}%`; if (p === 100) { clearInterval(loading); document.getElementById("loader-enter").classList.add("ready"); } }, 100);

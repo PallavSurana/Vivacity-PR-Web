@@ -1,0 +1,6 @@
+# Keep the private registration dashboard and spreadsheet receiver out of public hosting.
+admin.html
+admin.js
+admin.css
+google-apps-script.gs
+.DS_Store

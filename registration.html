@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vivacity '27 campus ambassador registration." />
+    <meta name="theme-color" content="#170b08" />
+    <title>Register | Vivacity '27</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="typography.css" />
+    <link rel="stylesheet" href="heritage.css" />
+    <link rel="stylesheet" href="registration.css" />
+  </head>
+  <body class="registration-page">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="registration-collage" id="registration-collage" aria-hidden="true"></div>
+    <header class="nav registration-nav">
+      <a class="brand" href="index.html" aria-label="Back to Vivacity home"><span>V</span>VIVACITY<sup>27</sup></a>
+      <a class="back-link" href="index.html">← BACK TO CITY</a>
+    </header>
+
+    <main class="registration-shell">
+      <div class="registration-intro">
+        <p class="eyebrow cyan">CAMPUS AMBASSADOR NETWORK / 2027</p>
+        <h1>PUT YOUR<br /><em>CAMPUS</em> ON THE MAP.</h1>
+        <p class="registration-lede">Register your institution with Vivacity '27 and signal the events your team wants to enter. One submission keeps your campus details and event preferences together.</p>
+        <div class="registration-aside"><span>01</span><p>ONE CAMPUS<br /><strong>ALL THE SIGNALS.</strong></p></div>
+      </div>
+
+      <form class="registration-form" id="registration-form">
+        <div class="form-heading"><span>REGISTRATION / <b id="step-number">001</b></span><small>FIELDS MARKED * ARE REQUIRED</small></div>
+        <div class="form-progress" aria-label="Registration progress"><span class="active" data-step-indicator="1">01</span><i></i><span data-step-indicator="2">02</span></div>
+        <section class="form-step active" data-step="1">
+          <p class="step-kicker">STEP 01 / CAMPUS IDENTITY</p>
+          <legend>01 / YOUR CAMPUS</legend>
+          <div class="field-grid">
+            <label>Full name *<input name="fullName" type="text" autocomplete="name" required placeholder="Your name" /></label>
+            <label>Role *<select name="role" id="role" required><option value="">Choose role</option><option value="Campus Ambassador">Campus Ambassador / Team Leader</option><option value="Faculty Coordinator">Faculty Coordinator</option></select></label>
+            <label>College / institution *<input name="institution" type="text" autocomplete="organization" required placeholder="Institution name" /></label>
+            <label>City *<input name="city" type="text" autocomplete="address-level2" required placeholder="City" /></label>
+            <label>Team size *<input name="teamSize" type="number" min="1" max="1000" required placeholder="Number of participants" /></label>
+            <label>Phone number *<input name="phone" type="tel" autocomplete="tel" required pattern="[0-9 +()-]{10,}" placeholder="10-digit number" /></label>
+            <label>Email address *<input name="email" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+          </div>
+          <div class="step-actions"><span>PAGE 1 OF 2</span><button class="step-button" type="button" data-next>CONTINUE TO EVENTS <i>→</i></button></div>
+        </section>
+
+        <section class="form-step" data-step="2" hidden>
+          <p class="step-kicker">STEP 02 / EVENT SIGNALS</p>
+          <legend>02 / EVENT TRANSMISSIONS</legend>
+          <div class="event-controls"><p>Select every event your campus wants to register for.</p><button type="button" class="select-all" id="select-all">SELECT ALL EVENTS <span>+</span></button></div>
+          <div class="event-groups" id="event-groups"></div>
+          <p class="selected-count" aria-live="polite"><strong id="selected-count">0</strong> events selected</p>
+          <label class="consent"><input type="checkbox" name="consent" required /><span>I confirm that these details are correct and agree to receive official Vivacity '27 updates.</span></label>
+          <div class="step-actions"><button class="back-step" type="button" data-back>← BACK</button><span>PAGE 2 OF 2</span><button class="step-button" type="submit">TRANSMIT REGISTRATION <i>↗</i></button></div>
+        </section>
+
+        <input type="hidden" name="selectedEvents" id="selected-events" />
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+
+      <section class="registration-success" id="registration-success" hidden>
+        <span class="success-mark">✓</span>
+        <p class="eyebrow cyan">TRANSMISSION RECEIVED</p>
+        <h2>YOU ARE<br /><em>CONNECTED.</em></h2>
+        <p id="registration-result">Your campus registration has been recorded for Vivacity '27. Keep this page open for the next transmission.</p>
+        <a class="back-link" href="index.html">← RETURN TO CITY</a>
+      </section>
+    </main>
+    <script src="registration.js"></script>
+  </body>
+</html>
